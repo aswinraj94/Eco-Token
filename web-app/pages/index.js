@@ -3,6 +3,14 @@ import styles from "../styles/Home.module.css";
 import Web3Modal from "web3modal";
 import { providers, Contract, ethers } from "ethers";
 import { useEffect, useRef, useState } from "react";
+import {
+  DynamicContextProvider,
+  DynamicWidget,
+} from "@dynamic-labs/sdk-react-core";
+import { EthersExtension } from "@dynamic-labs/ethers-v5";
+
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+
 
 import {abi as abi_Contract } from "../artifacts/contracts/Lock.sol/Lock.json";
 import {bytecode as bytecode_Contract} from "../artifacts/contracts/Lock.sol/Lock.json";
@@ -96,6 +104,23 @@ export default function Home() {
     } catch (err) {
       console.error(err);
     }
+  };
+
+
+
+  const App = () => {
+    return (
+      <DynamicContextProvider
+        settings={{
+          // Find your environment id at https://app.dynamic.xyz/dashboard/developer
+          environmentId: "REPLACE-WITH-YOUR-ENVIRONMENT-ID",
+          walletConnectorExtensions: [EthersExtension],
+          walletConnectors: [EthereumWalletConnectors],
+        }}
+      >
+        <DynamicWidget />
+      </DynamicContextProvider>
+    );
   };
 
   /*
