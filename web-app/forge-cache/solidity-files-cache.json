@@ -12,10 +12,10 @@
     ]
   },
   "files": {
-    "contracts/Counter.sol": {
-      "lastModificationDate": 1710653819519,
-      "contentHash": "f40edae3242ebc85b5021b1af7b2b269",
-      "sourceName": "contracts/Counter.sol",
+    "contracts/EcoToken.sol": {
+      "lastModificationDate": 1710661832832,
+      "contentHash": "2254d061a6c4e151a88321c5fb3d1bff",
+      "sourceName": "contracts/EcoToken.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -49,48 +49,8 @@
       ],
       "versionRequirement": "^0.8.13",
       "artifacts": {
-        "ECOGiveBack": {
-          "0.8.21+commit.d9974bed.Linux.gcc": "Counter.sol/ECOGiveBack.json"
-        }
-      }
-    },
-    "contracts/Lock.sol": {
-      "lastModificationDate": 1710537417170,
-      "contentHash": "ec3c7dc6d807b6b903e80a92dda2af08",
-      "sourceName": "contracts/Lock.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "paris",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.9",
-      "artifacts": {
-        "Lock": {
-          "0.8.21+commit.d9974bed.Linux.gcc": "Lock.sol/Lock.json"
+        "ECOToken": {
+          "0.8.21+commit.d9974bed.Linux.gcc": "EcoToken.sol/ECOToken.json"
         }
       }
     },

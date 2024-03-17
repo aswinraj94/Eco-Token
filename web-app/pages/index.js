@@ -59,7 +59,7 @@ export default function Home() {
             <div>
                 <div>
           <button onClick={deploycontracts} className={styles.button}>
-            Deploy
+            Balance
           </button>
           </div>
           Your Eco token balance: {ContractAddress}
@@ -77,7 +77,7 @@ export default function Home() {
       </Head>
       <DynamicContextProvider
         settings={{
-          environmentId: "ecefa76e-d7ea-4c98-9b5e-5e32a8d560d9",
+          environmentId: "3c3d3a12-a38f-43fb-b146-5cb447585a5b",
           walletConnectorExtensions: [EthersExtension],
           walletConnectors: [EthereumWalletConnectors],
         }}
@@ -91,9 +91,9 @@ export default function Home() {
             {/* Using HTML Entities for the apostrophe */}
             Click to check your Eco token balance
           </div>
-          <div className={styles.description}>
+          {/* <div className={styles.description}>
             Click to Deploy the Sample contract
-          </div>
+          </div> */}
           {renderButton()}
         </div>
         <div>

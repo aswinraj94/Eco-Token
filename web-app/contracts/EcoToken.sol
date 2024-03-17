@@ -5,10 +5,15 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract ECOToken is IERC20{
     uint256 public totalSupply;
+
     mapping(address => uint) public balanceOf;
     mapping(address => mapping(address => uint)) public allowance;
+
+    mapping(address => uint256) public Claim;
 	
 	mapping(address => bool) public IsEcoFriendly;
+
+    mapping(address => uint256) public LastECOTransaction;
 
 	string public name ;
     string public symbol;
@@ -30,8 +35,7 @@ contract ECOToken is IERC20{
         return msg.sender == _owner;
     }
 	
-    //function intializer( //external ToIntialize{
-        constructor(
+    constructor(
 	    uint256 _totalSupply,
         string memory _tokenName,
         uint8 _decimalUnits,
@@ -50,7 +54,11 @@ contract ECOToken is IERC20{
 
     function transfer(address recipient, uint amount) external returns (bool) {
 		require(balanceOf[msg.sender]>=amount,"Not enough Balance");
-		// Members_Data[recipient].IsaMember = true;
+		if(IsEcoFriendly[recipient] == true)
+        {
+            Claim[recipient]=100;
+            LastECOTransaction[recipient]=block.timestamp;
+        }
         balanceOf[msg.sender] -= amount;
         balanceOf[recipient] += amount;
 
@@ -72,19 +80,37 @@ contract ECOToken is IERC20{
 		require(balanceOf[spender]>=amount,"Not enough Balance");
         balanceOf[spender] -= amount;
         balanceOf[recipient] += amount;
-
+		if(IsEcoFriendly[recipient] == true)
+        {
+            Claim[recipient]=100;
+            LastECOTransaction[recipient]=block.timestamp;
+        }
         emit Transfer(spender, recipient, amount);
         return true;
     }
 
-    function mint(uint amount) external onlyOwner{
+
+    function ClaimToken() public{
+        uint256 ClaimAmount=Claim[msg.sender];
+        uint256 TimeFromLastECOTransaction;
+
+        TimeFromLastECOTransaction=block.timestamp-LastECOTransaction[msg.sender];
+
+        ClaimAmount = ClaimAmount / (TimeFromLastECOTransaction/ 4 weeks );
+
+        require(Claim[msg.sender]>0,"No Claim Amount");
+        totalSupply += ClaimAmount;
+        balanceOf[msg.sender] += ClaimAmount;
+    }
+
+    function mint(uint amount) private onlyOwner{
         balanceOf[msg.sender] += amount;
 
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint amount) external onlyOwner{
+    function burn(uint amount) private onlyOwner{
         balanceOf[msg.sender] -= amount;
 
         totalSupply -= amount;
