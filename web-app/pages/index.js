@@ -12,8 +12,8 @@ import { EthersExtension } from "@dynamic-labs/ethers-v5";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
 
-import {abi as abi_Contract } from "../artifacts/contracts/Lock.sol/Lock.json";
-import {bytecode as bytecode_Contract} from "../artifacts/contracts/Lock.sol/Lock.json";
+import {abi as abi_Contract } from "../artifacts/contracts/EcoToken.sol/EcoToken.json";
+import {bytecode as bytecode_Contract} from "../artifacts/contracts/EcoToken.sol/EcoToken.json";
 
 export default function Home() {
   // loading is set to true when we are waiting for a transaction to get mined
