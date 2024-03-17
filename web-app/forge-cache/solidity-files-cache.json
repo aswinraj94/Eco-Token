@@ -13,8 +13,8 @@
   },
   "files": {
     "contracts/EcoToken.sol": {
-      "lastModificationDate": 1710661832832,
-      "contentHash": "2254d061a6c4e151a88321c5fb3d1bff",
+      "lastModificationDate": 1710663435339,
+      "contentHash": "9a6a799c9cdbb84aef6ad4a9ea244877",
       "sourceName": "contracts/EcoToken.sol",
       "solcConfig": {
         "settings": {

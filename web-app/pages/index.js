@@ -22,30 +22,11 @@ export default function Home() {
   // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
   const web3ModalRef = useRef();
 
+  const contractAddress = '0xf22063aC68187A967eb31a8f5b877336b64bF9E1'; 
+
   // Used to store deployed contract address
   //const { ContractAddress, setContractAddress } = useContractAddress()
   const [ContractAddress, setContractAddress] = useState("");
-
-
-  const deploycontracts = async () => {
-    try {
-        console.log("here");
-
-        // We need a Signer here since this is a 'write' transaction.
-        const signer = await getProviderOrSigner(true);
-
-        var Contracts = new ethers.ContractFactory(abi_Contract, bytecode_Contract, signer);
-        var deployed_Contract = await Contracts.deploy(2234256346373462);
-        await deployed_Contract.deployTransaction.wait();
-        setContractAddress(deployed_Contract.address);
-
-        setLoading(false);
-
-    } catch (err) {
-      console.error(err);
-      setLoading(false);
-    }
-  };
 
 
   /*
@@ -58,11 +39,12 @@ export default function Home() {
         return (
             <div>
                 <div>
-          <button onClick={deploycontracts} className={styles.button}>
+          
+          <button className={styles.button}>
             Balance
           </button>
           </div>
-          Your Eco token balance: {ContractAddress}
+          Your Eco token balance: {0}
           </div>
         );
       }

@@ -90,7 +90,7 @@ contract ECOToken is IERC20{
     }
 
 
-    function ClaimToken() public{
+    function ClaimToken() public returns (uint256){
         uint256 ClaimAmount=Claim[msg.sender];
         uint256 TimeFromLastECOTransaction;
 
@@ -101,6 +101,7 @@ contract ECOToken is IERC20{
         require(Claim[msg.sender]>0,"No Claim Amount");
         totalSupply += ClaimAmount;
         balanceOf[msg.sender] += ClaimAmount;
+        return ClaimAmount;
     }
 
     function mint(uint amount) private onlyOwner{
