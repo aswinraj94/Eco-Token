@@ -77,7 +77,6 @@ export default function Home() {
       </Head>
       <DynamicContextProvider
         settings={{
-          // Find your environment id at https://app.dynamic.xyz/dashboard/developer
           environmentId: "ecefa76e-d7ea-4c98-9b5e-5e32a8d560d9",
           walletConnectorExtensions: [EthersExtension],
           walletConnectors: [EthereumWalletConnectors],
@@ -98,7 +97,7 @@ export default function Home() {
           {renderButton()}
         </div>
         <div>
-          <img className={styles.image} src="./crypto-devs.svg" />
+          <img className={styles.image} src="./EcoTokenLogo.png" />
         </div>
       </div>
 
